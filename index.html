@@ -4,311 +4,386 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Happy Birthday, Aabha ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="description" content="A small surprise website for Aabha — password protected." />
 <style>
-/* Inlined CSS - cute romantic theme */
+/* Mobile-first, responsive, accessible CSS (inline) */
 :root{
   --bg:#fff8fb;
   --card:#ffffff;
   --accent:#ff6b9a;
-  --muted:#7b6c77;
-  --shadow: 0 8px 24px rgba(99,88,112,0.08);
+  --accent-2:#ff9ab8;
+  --muted:#6b5560;
+  --shadow: 0 12px 30px rgba(91,70,86,0.08);
   --radius:14px;
-  --container:1100px;
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --container:980px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
 }
+
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
-  background:linear-gradient(180deg,#fff8fb 0%, #fef7f2 50%);
-  color:#2e2230;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  background:linear-gradient(180deg,#fff8fb 0%, #fffaf6 50%);
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
-  padding:24px;
+  padding:20px;
+  font-size:16px;
+  color:#3a2430;
+  min-height:100vh;
 }
-.site-wrap{max-width:var(--container);width:100%}
-.hero{
-  position:relative;
-  overflow:hidden;
-  border-radius:20px;
-  padding:36px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,240,245,0.6));
-  box-shadow:var(--shadow);
-}
-.logo{font-family:'Great Vibes',cursive;font-size:28px;color:var(--accent);margin:0}
-.header-row{display:flex;justify-content:space-between;align-items:center;padding-bottom:8px}
-.greeting{font-family:'Great Vibes',cursive;font-size:44px;margin:0;color:#3b1a2b}
-.subtitle{margin:6px 0 0 0;color:var(--muted)}
 
-/* Lock screen styles */
-.lock-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:380px;gap:12px;text-align:center;padding:30px}
-.lock-card{background:rgba(255,255,255,0.85);padding:22px;border-radius:16px;box-shadow:var(--shadow);max-width:720px;width:100%}
-.lock-input{display:flex;gap:10px;align-items:center;justify-content:center}
-.lock-input input[type="password"]{padding:12px 14px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);width:220px;font-size:16px}
+/* container */
+.container{width:100%;max-width:var(--container);}
+
+/* card */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,251,0.95));
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:18px;
+  margin-bottom:18px;
+}
+
+/* header */
+.header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 6px}
+.brand{font-family: "GreatVibes", cursive; font-size:26px;color:var(--accent);letter-spacing:0.4px}
+.small-note{font-size:13px;color:var(--muted)}
+
+/* lock screen styles */
+.lock-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 14px;min-height:320px;text-align:center;gap:12px}
+.lock-card{width:100%;max-width:740px;border-radius:14px;padding:16px;background:rgba(255,255,255,0.96);box-shadow:0 10px 30px rgba(90,70,86,0.06)}
+
+.greeting{font-family: 'Georgia', serif;font-size:34px;margin:6px 0;color:#3b1a2b}
+.subtitle{margin:0;color:var(--muted);font-weight:500}
+
+.input-row{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:6px}
+.input-row input[type="password"]{padding:12px 14px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);width:220px;font-size:16px;outline:none}
+.input-row button{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
+
 .hint{color:var(--muted);font-size:14px;margin-top:6px}
 
-/* main content hidden until unlock */
-.main-content{display:none;opacity:0;transition:opacity .6s ease}
+/* play prompt */
+.play-prompt{display:none;margin-top:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:700}
 
-/* gallery & timeline cards */
-.card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:18px}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px}
-.gallery-grid img{width:100%;height:160px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .28s ease,box-shadow .25s ease;}
-.timeline-list{display:flex;flex-direction:column;gap:12px;padding-top:6px}
-.dot{min-width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#ffa3c0);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-.time-content h4{margin:0 0 6px 0}
-.time-content p{margin:0;color:var(--muted)}
+/* main content (hidden initially) */
+.main{display:none;opacity:0;transition:opacity .5s ease;}
 
-/* floating hearts */
-.floating-hearts{position:absolute;right:-30px;top:-30px;width:300px;height:300px;pointer-events:none;opacity:0.95}
-.heart{position:absolute;pointer-events:none;transform:translate(-50%,-50%);opacity:0.95;filter:drop-shadow(0 6px 12px rgba(255,90,135,0.12))}
+/* hero */
+.hero{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:12px}
+.hero .title{font-family:'Georgia',serif;font-size:28px;margin:0;color:#3b1a2b}
+.hero .lead{color:var(--muted);margin:0}
+
+/* gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.gallery-grid img{width:100%;height:140px;object-fit:cover;border-radius:12px;display:block;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease}
+.gallery-grid img:active{transform:scale(.99)}
+
+/* timeline */
+.timeline{margin-top:12px;display:flex;flex-direction:column;gap:12px}
+.timeline-item{display:flex;gap:10px;align-items:flex-start}
+.dot{min-width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;flex-shrink:0}
+
+/* footer */
+.footer{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:8px}
 
 /* lightbox */
-.lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,12,18,0.6);visibility:hidden;opacity:0;transition:opacity .24s ease,visibility .24s}
-.lightbox img{max-width:90%;max-height:74%;border-radius:12px;box-shadow:0 18px 60px rgba(9,9,9,0.6)}
-.lightbox .lb-close{position:absolute;top:28px;right:28px;background:transparent;border:0;color:white;font-size:24px;cursor:pointer}
+.lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(18,12,16,0.66);visibility:hidden;opacity:0;transition:opacity .18s ease,visibility .18s;z-index:9998}
+.lightbox img{max-width:92%;max-height:78%;border-radius:12px;box-shadow:0 18px 60px rgba(9,9,9,0.6)}
 .lightbox.show{visibility:visible;opacity:1}
 
-/* utility */
-.btn{background:var(--accent);color:white;border:none;padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:600}
-.btn.ghost{background:transparent;color:var(--accent);border:2px solid rgba(255,107,154,0.12)}
-.small{padding:6px 10px;font-size:13px;border-radius:10px}
-.footer{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:12px}
-
-/* responsive */
+/* small screens adjustments */
 @media (max-width:720px){
-  .greeting{font-size:36px}
+  .greeting{font-size:28px}
+  .brand{font-size:22px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .gallery-grid img{height:120px}
+  .input-row input[type="password"]{width:160px}
 }
+
+/* larger screens */
+@media (min-width:980px){
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .gallery-grid img{height:160px}
+}
+
+/* decorative hearts */
+.heart{position:absolute;pointer-events:none;transform:translate(-50%,-50%);opacity:0.85;font-size:18px;will-change:transform,opacity}
 </style>
 </head>
 <body>
-<div class="site-wrap">
-  <div class="hero" role="main" aria-labelledby="hero-title">
-    <div class="header-row">
-      <h1 class="logo">Aabha & Prabesh</h1>
-      <div>
-        <button id="play-music" class="btn small" style="display:none">Pause music ⏸</button>
-      </div>
-    </div>
-
-    <!-- LOCK SCREEN -->
-    <div id="lock" class="lock-screen lock-card" aria-live="polite">
-      <h2 id="hero-title" class="greeting">Hey Aabha 💖</h2>
-      <p class="subtitle">Enter the secret password to open your surprise</p>
-      <div class="lock-input" role="group" aria-label="Password input">
-        <input id="pw-input" type="password" placeholder="Type the secret password" autocomplete="off" aria-label="Password">
-        <button id="pw-btn" class="btn">Unlock ✨</button>
-      </div>
-      <p class="hint"><strong>Hint:</strong> When Did I Officially Proposed you ? 🤭 Month and date only</p>
-      <p id="pw-msg" class="hint" style="color:#b24d6a;"></p>
-    </div>
-
-    <!-- MAIN CONTENT (hidden until unlock) -->
-    <div id="main" class="main-content" aria-hidden="true">
-      <div style="position:relative">
-        <div class="floating-hearts" aria-hidden="true"></div>
-      </div>
-
-      <section class="card" id="message">
-        <h3>Love message</h3>
-        <p class="love-text">My dearest Aabha, every day with you is my favorite day. Your smile turns ordinary moments into magic. On this birthday, I wish you all the joy you bring me tenfold. I love you — always and forever. — Prabesh ❤️</p>
-        <div style="margin-top:10px;">
-          <button id="surprise-btn" class="btn">Give Aabha a Surprise ✨</button>
-          <button id="confetti-btn" class="btn ghost">Celebrate 🎊</button>
-        </div>
-      </section>
-
-      <section id="gallery" class="card">
-        <h3>Photo gallery</h3>
-        <div class="gallery-grid" id="gallery-grid">
-          <!-- Replace these src URLs with your own Blogger-uploaded image URLs later -->
-          <img data-caption="When we first met — Feb 2023" src="https://source.unsplash.com/collection/895539/800x600" alt="photo1">
-          <img data-caption="Our first date — March 2023" src="https://source.unsplash.com/collection/190727/800x600" alt="photo2">
-          <img data-caption="Weekend trip — June 2023" src="https://source.unsplash.com/collection/1163637/800x600" alt="photo3">
-          <img data-caption="Movie night cuddles — Sep 2023" src="https://source.unsplash.com/collection/896430/800x600" alt="photo4">
-          <img data-caption="Rainy day fun — Dec 2023" src="https://source.unsplash.com/collection/139386/800x600" alt="photo5">
-          <img data-caption="Just us — Today" src="https://source.unsplash.com/collection/190727/801x601" alt="photo6">
-        </div>
-      </section>
-
-      <section id="timeline" class="card">
-        <h3>Our timeline</h3>
-        <div class="timeline-list">
-          <div class="timeline-item">
-            <div class="dot">1</div>
-            <div class="time-content">
-              <h4>First Hello — Feb 14, 2023</h4>
-              <p>We bumped into each other at that small café — I still remember your laugh.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="dot">2</div>
-            <div class="time-content">
-              <h4>First Date — March 2, 2023</h4>
-              <p>Our first dinner and endless talks till midnight. I knew something was different.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="dot">3</div>
-            <div class="time-content">
-              <h4>Trip to Pokhara — June 8, 2023</h4>
-              <p>Mountains, lakes, and a million photos. Best trip with my favorite person.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="dot">4</div>
-            <div class="time-content">
-              <h4>First 'I miss you' — Sep 10, 2023</h4>
-              <p>We learned how much presence matters. Long-distance was hard — but we were stronger.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="dot">5</div>
-            <div class="time-content">
-              <h4>Celebrated Together — Feb 24, 2024</h4>
-              <p>Birthday, cake, and dancing in the living room.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="dot">6</div>
-            <div class="time-content">
-              <h4>Everyday — Today</h4>
-              <p>Small moments, big love. Thank you for being you.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer class="footer card">
-        <p>Made with ❤️ by Prabesh — <small>October 24</small></p>
-        <div class="footer-actions">
-          <button id="download-btn" class="btn small">Download as PDF</button>
-        </div>
-      </footer>
-    </div>
+<noscript>
+  <div style="max-width:980px;margin:20px auto;padding:16px;background:#fff5f8;border-radius:12px;color:#7b4458;font-family:Inter,system-ui;">
+    💖 Please enable JavaScript to view Aabha's surprise. If you can't enable JS right now, message Prabesh privately to see it. 💌
   </div>
+</noscript>
+
+<div class="container" id="pageContainer">
+  <header class="card header" role="banner" aria-label="Aabha and Prabesh header">
+    <div class="brand" aria-hidden="false">Aabha &nbsp;❤&nbsp; Prabesh</div>
+    <div class="small-note" aria-hidden="true">October 24 · A small surprise</div>
+  </header>
+
+  <!-- LOCK SCREEN -->
+  <main id="lockSection" class="card lock-wrap" role="main" aria-labelledby="greet" aria-live="polite">
+    <div class="lock-card" role="region" aria-labelledby="greet" aria-describedby="pwHint">
+      <h2 id="greet" class="greeting">Hey Aabha 💖</h2>
+      <p class="subtitle">Enter the secret password to open your surprise</p>
+      <div class="input-row" role="group" aria-label="Password input">
+        <input id="pw" type="password" placeholder="Type the secret password" autocomplete="off" aria-label="Password" aria-required="true" />
+        <button id="unlockBtn" type="button" aria-label="Unlock">Unlock ✨</button>
+      </div>
+      <p id="pwHint" class="hint"><strong>Hint:</strong> When Did I Officially Proposed you ? 🤭 Month and date only</p>
+      <p id="pwMsg" class="hint" style="color:#b24d6a;margin-top:6px" aria-live="assertive"></p>
+
+      <div id="playPrompt" class="play-prompt" role="button" tabindex="0" aria-hidden="true">🎶 Tap to start our song</div>
+    </div>
+  </main>
+
+  <!-- MAIN CONTENT (hidden until unlocked) -->
+  <section id="mainContent" class="card main" aria-hidden="true">
+    <div class="hero" aria-labelledby="heroTitle">
+      <h3 id="heroTitle" class="title">Happy Birthday, <span style="font-family:'Georgia',serif">Aabha Tiwari</span> 🎉</h3>
+      <p class="lead">A small website made with all my love — for your special day, October 24.</p>
+    </div>
+
+    <section class="card" id="message" aria-labelledby="msgTitle">
+      <h4 id="msgTitle" style="margin:0 0 8px 0">Love message</h4>
+      <p style="margin:0;color:#3b2430;line-height:1.6">My dearest Aabha, every day with you is my favorite day. Your smile turns ordinary moments into magic. On this birthday, I wish you all the joy you bring me tenfold. I love you — always and forever. — Prabesh ❤️</p>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <button id="surpriseBtn" class="btn" style="background:var(--accent);color:white;border-radius:12px;padding:8px 12px;border:0" aria-label="Send surprise">Give Aabha a Surprise ✨</button>
+        <button id="confettiBtn" class="btn" style="background:transparent;color:var(--accent);border:2px solid rgba(255,107,154,0.12);border-radius:12px;padding:8px 12px" aria-label="Celebrate">Celebrate 🎊</button>
+      </div>
+    </section>
+
+    <section class="card" id="gallerySec" aria-labelledby="galleryTitle">
+      <h4 id="galleryTitle" style="margin:0 0 8px 0">Photo gallery</h4>
+      <div class="gallery-grid" id="galleryGrid" aria-live="polite">
+        <!-- Placeholder images — Replace after publishing by editing image src to your Blogger-hosted URLs -->
+        <img data-caption="When we first met — Feb 2023" src="https://source.unsplash.com/collection/895539/800x600" alt="Couple photo - when we first met">
+        <img data-caption="Our first date — March 2, 2023" src="https://source.unsplash.com/collection/190727/800x600" alt="Couple photo - first date">
+        <img data-caption="Weekend trip — June 8, 2023" src="https://source.unsplash.com/collection/1163637/800x600" alt="Couple photo - trip">
+        <img data-caption="Movie night cuddles — Sep 2023" src="https://source.unsplash.com/collection/896430/800x600" alt="Couple photo - movie night">
+        <img data-caption="Rainy day fun — Dec 2023" src="https://source.unsplash.com/collection/139386/800x600" alt="Couple photo - rainy day">
+        <img data-caption="Just us — Today" src="https://source.unsplash.com/collection/190727/801x601" alt="Couple photo - just us">
+      </div>
+    </section>
+
+    <section class="card" id="timelineSec" aria-labelledby="timelineTitle">
+      <h4 id="timelineTitle" style="margin:0 0 8px 0">Our timeline</h4>
+      <div class="timeline" role="list">
+        <div class="timeline-item" role="listitem"><div class="dot" aria-hidden="true">1</div><div class="time"><h5 style="margin:0">First Hello — Feb 14, 2023</h5><p style="margin:4px 0 0 0;color:var(--muted)">We bumped into each other at that small café — I still remember your laugh.</p></div></div>
+        <div class="timeline-item" role="listitem"><div class="dot" aria-hidden="true">2</div><div class="time"><h5 style="margin:0">First Date — March 2, 2023</h5><p style="margin:4px 0 0 0;color:var(--muted)">Our first dinner and endless talks till midnight.</p></div></div>
+        <div class="timeline-item" role="listitem"><div class="dot" aria-hidden="true">3</div><div class="time"><h5 style="margin:0">Trip to Pokhara — June 8, 2023</h5><p style="margin:4px 0 0 0;color:var(--muted)">Mountains, lakes, and a million photos.</p></div></div>
+        <div class="timeline-item" role="listitem"><div class="dot" aria-hidden="true">4</div><div class="time"><h5 style="margin:0">First 'I miss you' — Sep 10, 2023</h5><p style="margin:4px 0 0 0;color:var(--muted)">Long-distance made our moments precious.</p></div></div>
+        <div class="timeline-item" role="listitem"><div class="dot" aria-hidden="true">5</div><div class="time"><h5 style="margin:0">Celebrated Together — Feb 24, 2024</h5><p style="margin:4px 0 0 0;color:var(--muted)">Birthday, cake, and dancing in the living room.</p></div></div>
+        <div class="timeline-item" role="listitem"><div class="dot" aria-hidden="true">6</div><div class="time"><h5 style="margin:0">Everyday — Today</h5><p style="margin:4px 0 0 0;color:var(--muted)">Small moments, big love. Thank you for being you.</p></div></div>
+      </div>
+    </section>
+
+    <footer class="card footer" style="align-items:center" aria-label="Footer">
+      <div style="font-size:14px;color:var(--muted)">Made with ❤️ by Prabesh — October 24</div>
+      <div aria-hidden="true"></div>
+    </footer>
+  </section>
 </div>
 
 <!-- Lightbox -->
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <button id="lb-close" class="lb-close" aria-label="Close">✕</button>
-  <img id="lb-img" src="" alt="enlarged photo">
-  <p id="lb-caption" class="lb-caption" style="color:white;text-align:center;margin-top:12px"></p>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+  <img id="lightImg" src="" alt="Enlarged photo">
 </div>
 
-<!-- Audio: will start only after unlock -->
-<audio id="bg-audio" loop preload="none">
+<!-- Hidden audio (will attempt to play only after unlock or when user taps play prompt) -->
+<audio id="bgAudio" preload="none" loop>
   <source src="https://cdn.pixabay.com/download/audio/2021/10/07/audio_bf1b6dbb95.mp3?filename=relaxing-acoustic-guitar-11157.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+  <!-- fallback text -->
+  Your browser does not support HTML5 audio.
 </audio>
 
-<!-- External libs for animation & confetti -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
-
 <script>
-// Password-protected single-file site
-document.addEventListener('DOMContentLoaded', ()=>{
-  const LOCK = document.getElementById('lock');
-  const MAIN = document.getElementById('main');
-  const PW_INPUT = document.getElementById('pw-input');
-  const PW_BTN = document.getElementById('pw-btn');
-  const PW_MSG = document.getElementById('pw-msg');
-  const BG_A = document.getElementById('bg-audio');
-  const PLAY_BTN = document.getElementById('play-music');
-  const CORRECT = 'feburary2'; // case-insensitive
-  const HINT_MSG = "😔 Bad Guess Gareu Nani, Use this format :- Month(no space)Day";
+(function(){
+  'use strict';
+  const CORRECT = 'february2'; // updated correct password (case-insensitive)
+  const hintWrong = '😔 Bad Guess Gareu Nani, Use this format :- Month(no space)Day';
 
-  function unlockSite(){
-    // hide lock, show main with animation
-    LOCK.style.display = 'none';
-    MAIN.style.display = 'block';
-    setTimeout(()=>{ MAIN.style.opacity = 1; MAIN.setAttribute('aria-hidden','false'); }, 40);
-    // start music
-    BG_A.play().catch(()=>{});
-    // show play button
-    PLAY_BTN.style.display = 'inline-block';
-    // small entrance animations
-    gsap.from('.greeting',{y:20,opacity:0,duration:0.8});
-    gsap.from('.card',{y:20,opacity:0,duration:0.8,stagger:0.08});
+  // elements
+  const pw = document.getElementById('pw');
+  const unlockBtn = document.getElementById('unlockBtn');
+  const pwMsg = document.getElementById('pwMsg');
+  const lockSection = document.getElementById('lockSection');
+  const mainContent = document.getElementById('mainContent');
+  const bgAudio = document.getElementById('bgAudio');
+  const galleryGrid = document.getElementById('galleryGrid');
+  const lightbox = document.getElementById('lightbox');
+  const lightImg = document.getElementById('lightImg');
+  const confettiBtn = document.getElementById('confettiBtn');
+  const surpriseBtn = document.getElementById('surpriseBtn');
+  const playPrompt = document.getElementById('playPrompt');
+
+  // helper for accessibility focus trap fallback
+  let lastFocused = null;
+
+  // show main content after unlock
+  function showMain(){
+    // hide lock and reveal main
+    lockSection.style.display = 'none';
+    mainContent.style.display = 'block';
+    setTimeout(()=>{ mainContent.style.opacity = 1; mainContent.setAttribute('aria-hidden','false'); }, 40);
+    // attempt to play audio
+    bgAudio.play().then(()=>{
+      // audio started fine
+      playPrompt.style.display = 'none';
+      playPrompt.setAttribute('aria-hidden','true');
+    }).catch(()=>{
+      // autoplay blocked: show play prompt to user
+      playPrompt.style.display = 'block';
+      playPrompt.setAttribute('aria-hidden','false');
+    });
+    // spawn a few hearts for visual delight
+    createHearts(6);
   }
 
-  function wrongGuess(){
-    PW_MSG.textContent = HINT_MSG;
-    gsap.fromTo(PW_INPUT,{x:-6},{x:0,duration:0.4,repeat:2,yoyo:true,ease:'elastic.out(1,0.5)'});
+  function wrong(){
+    pwMsg.textContent = hintWrong;
+    // small shake for the input (visual)
+    pw.animate([{ transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }], { duration: 360, iterations: 1 });
+    pw.focus();
   }
 
-  PW_BTN.addEventListener('click', ()=>{
-    const val = PW_INPUT.value.trim().toLowerCase();
+  // unlock button handler
+  unlockBtn.addEventListener('click', ()=>{
+    const val = (pw.value || '').trim().toLowerCase();
     if(val === CORRECT){
-      unlockSite();
+      // record last focus to restore later if needed
+      lastFocused = document.activeElement;
+      showMain();
+      // clear message
+      pwMsg.textContent = '';
     } else {
-      wrongGuess();
+      wrong();
     }
   });
 
-  PW_INPUT.addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter') PW_BTN.click();
+  // enter key submits
+  pw.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') unlockBtn.click(); });
+
+  // play prompt: user taps to start audio manually
+  playPrompt.addEventListener('click', ()=>{
+    bgAudio.play().then(()=>{
+      playPrompt.style.display = 'none';
+      playPrompt.setAttribute('aria-hidden','true');
+    }).catch(()=>{});
+  });
+  playPrompt.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playPrompt.click(); } });
+
+  // gallery lightbox
+  galleryGrid.addEventListener('click', (e)=>{
+    const t = e.target;
+    if(t && t.tagName === 'IMG'){
+      lightImg.src = t.src;
+      lightbox.classList.add('show');
+      lightbox.style.visibility = 'visible';
+      lightbox.style.opacity = '1';
+      lightbox.setAttribute('aria-hidden','false');
+      // move focus to lightbox for accessibility
+      lightbox.focus();
+    }
   });
 
-  // Floating hearts
-  const heartsRoot = document.querySelector('.floating-hearts');
-  function spawnHeart(){
-    const h = document.createElement('div');
-    h.innerHTML = '❤';
-    h.className = 'heart';
-    h.style.left = (Math.random()*100) + '%';
-    h.style.top = (Math.random()*100) + '%';
-    h.style.fontSize = (12 + Math.random()*40) + 'px';
-    heartsRoot.appendChild(h);
-    gsap.to(h,{y:-80,opacity:0,duration:3+Math.random()*2,ease:'power1.out',onComplete:()=>h.remove()});
+  // close lightbox on click outside or on esc
+  lightbox.addEventListener('click', (e)=>{
+    // close if clicking outside image
+    if(e.target === lightbox) closeLightbox();
+  });
+
+  function closeLightbox(){
+    lightbox.classList.remove('show');
+    lightbox.style.visibility = 'hidden';
+    lightbox.style.opacity = '0';
+    lightImg.src = '';
+    lightbox.setAttribute('aria-hidden','true');
+    // restore focus to last focused element inside main content
+    if(lastFocused && mainContent.contains(lastFocused)) lastFocused.focus();
   }
-  setInterval(()=>{ spawnHeart(); }, 900);
 
-  // Gallery lightbox
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lb-img');
-  const lbCaption = document.getElementById('lb-caption');
-  document.querySelectorAll('.gallery-grid img').forEach(img=>{
-    img.addEventListener('click', ()=>{
-      lbImg.src = img.src;
-      lbCaption.textContent = img.dataset.caption || '';
-      lb.classList.add('show');
-      lb.setAttribute('aria-hidden','false');
-      gsap.fromTo(lbImg,{scale:0.9,opacity:0},{scale:1,opacity:1,duration:0.4});
-    });
-  });
-  document.getElementById('lb-close').addEventListener('click', ()=>{ closeLB(); });
-  lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
-  function closeLB(){ lb.classList.remove('show'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
-
-  // timeline open (small demo: animate dots)
-  // confetti & surprise
-  document.getElementById('confetti-btn').addEventListener('click', ()=>{ confetti({particleCount:120,spread:70,origin:{y:0.6}}); });
-  document.getElementById('surprise-btn').addEventListener('click', ()=>{
-    gsap.fromTo('.love-text',{scale:1},{scale:1.02,duration:0.18,yoyo:true,repeat:1});
-    confetti({particleCount:180,spread:100,origin:{y:0.5}});
-    alert('Surprise sent! 💌 (Demo)');
+  // esc key closes lightbox and also returns focus appropriately
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' || e.key === 'Esc'){
+      // if lightbox open, close it
+      if(lightbox.getAttribute('aria-hidden') === 'false') closeLightbox();
+    }
+    // convenience: 'h' to spawn hearts
+    if(e.key && e.key.toLowerCase() === 'h') createHearts(12);
   });
 
-  // download (print fallback)
-  document.getElementById('download-btn').addEventListener('click', ()=>{ window.print(); });
+  // surprise & confetti (simple canvas confetti)
+  function random(min, max){ return Math.random()*(max-min)+min; }
 
-  // music control
-  PLAY_BTN.addEventListener('click', ()=>{
-    if(BG_A.paused){ BG_A.play().catch(()=>{}); PLAY_BTN.textContent='Pause music ⏸'; }
-    else{ BG_A.pause(); PLAY_BTN.textContent='Play music ♫'; }
-  });
+  function fireConfetti(){
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.left = 0; canvas.style.top = 0;
+    canvas.style.width = '100%'; canvas.style.height = '100%';
+    canvas.width = innerWidth; canvas.height = innerHeight;
+    canvas.style.zIndex = 9999;
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    const pieces = [];
+    const colors = ['#ff6b9a','#ffd1e0','#ff9ab8','#ffeeef','#ffd6e6','#ff7fb0'];
+    for(let i=0;i<120;i++){
+      pieces.push({ x: random(0, canvas.width), y: random(-canvas.height,0), w: random(6,12), h: random(8,16), vx: random(-2,2), vy: random(2,6), r: random(0,360), color: colors[Math.floor(random(0,colors.length))] });
+    }
+    let raf;
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for(const p of pieces){
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.r * Math.PI/180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+        p.x += p.vx;
+        p.y += p.vy;
+        p.r += 4;
+        if(p.y > canvas.height + 20){ p.y = random(-canvas.height, -10); p.x = random(0, canvas.width); }
+      }
+      raf = requestAnimationFrame(draw);
+    }
+    draw();
+    setTimeout(()=>{ cancelAnimationFrame(raf); canvas.remove(); }, 2800);
+  }
 
-  // accessibility: focus outlines when using keyboard
-  document.body.addEventListener('keyup', (e)=>{ if(e.key==='Tab') document.body.classList.add('show-focus'); });
+  // attach confetti handlers (only if buttons exist)
+  if(confettiBtn) confettiBtn.addEventListener('click', ()=>{ fireConfetti(); });
+  if(surpriseBtn) surpriseBtn.addEventListener('click', ()=>{ fireConfetti(); alert('Surprise sent! 💌 (Demo)'); });
 
-}); // DOMContentLoaded
+  // floating hearts (lightweight)
+  function createHearts(count){
+    for(let i=0;i<count;i++){
+      const el = document.createElement('div');
+      el.className = 'heart';
+      el.textContent = '❤';
+      el.style.left = (Math.random()*90 + 5) + '%';
+      el.style.top = (Math.random()*60 + 5) + '%';
+      el.style.fontSize = (12 + Math.random()*36) + 'px';
+      el.style.zIndex = 5;
+      document.body.appendChild(el);
+      const anim = el.animate([{ transform: 'translateY(0) scale(1)', opacity:1 }, { transform: 'translateY(-160px) scale(.8)', opacity:0 }], { duration: 3000+Math.random()*1200, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      anim.onfinish = ()=>el.remove();
+    }
+  }
+  // periodic hearts
+  setInterval(()=>{ createHearts(1); }, 900);
+
+  // accessibility: focus outline on keyboard tab
+  document.body.addEventListener('keyup', (e)=>{ if(e.key === 'Tab') document.body.classList.add('show-focus'); });
+
+  // clean up on page unload
+  window.addEventListener('beforeunload', ()=>{ try{ bgAudio.pause(); bgAudio.currentTime = 0; }catch(e){} });
+
+})(); // end IIFE
 </script>
 </body>
 </html>
