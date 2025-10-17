@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday, Aabha ❤️</title>
+  <link href="styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="overlay"></div>
+      <div class="nav">
+        <h1 class="logo">Aabha & Prabesh</h1>
+        <button id="play-music" class="btn small">Play music ♫</button>
+      </div>
+      <div class="hero-inner">
+        <h2 class="greeting">Happy Birthday, <span class="name">Aabha Tiwari</span> 🎉</h2>
+        <p class="subtitle">A small website made with all my love — for your special day, October 24.</p>
+        <div class="cta-row">
+          <button id="open-gallery" class="btn">View Our Gallery</button>
+          <button id="open-timeline" class="btn ghost">See Our Timeline</button>
+        </div>
+      </div>
+      <div class="floating-hearts" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <section id="message" class="card">
+        <h3>Love message</h3>
+        <p class="love-text">My dearest Aabha, every day with you is my favorite day. Your smile turns ordinary moments into magic. On this birthday, I wish you all the joy you bring me tenfold. I love you — always and forever. — Prabesh ❤️</p>
+        <div class="actions">
+          <button id="surprise-btn" class="btn">Give Aabha a Surprise ✨</button>
+          <button id="confetti-btn" class="btn ghost">Celebrate 🎊</button>
+        </div>
+      </section>
+
+      <section id="gallery" class="card">
+        <h3>Photo gallery</h3>
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- 6 placeholder images from Unsplash (random couple / love queries) -->
+          <img data-caption="When we first met — Feb 2023" src="https://source.unsplash.com/collection/895539/800x600" alt="photo1">
+          <img data-caption="Our first date — March 2023" src="https://source.unsplash.com/collection/190727/800x600" alt="photo2">
+          <img data-caption="Weekend trip — June 2023" src="https://source.unsplash.com/collection/1163637/800x600" alt="photo3">
+          <img data-caption="Movie night cuddles — Sep 2023" src="https://source.unsplash.com/collection/896430/800x600" alt="photo4">
+          <img data-caption="Rainy day fun — Dec 2023" src="https://source.unsplash.com/collection/139386/800x600" alt="photo5">
+          <img data-caption="Just us — Today" src="https://source.unsplash.com/collection/190727/801x601" alt="photo6">
+        </div>
+      </section>
+
+      <section id="timeline" class="card">
+        <h3>Our timeline</h3>
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <div class="dot">1</div>
+            <div class="time-content">
+              <h4>First Hello — Feb 14, 2023</h4>
+              <p>We bumped into each other at that small café — I still remember your laugh.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot">2</div>
+            <div class="time-content">
+              <h4>First Date — March 2, 2023</h4>
+              <p>Our first dinner and endless talks till midnight. I knew something was different.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot">3</div>
+            <div class="time-content">
+              <h4>Trip to Pokhara — June 8, 2023</h4>
+              <p>Mountains, lakes, and a million photos. Best trip with my favorite person.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot">4</div>
+            <div class="time-content">
+              <h4>First 'I miss you' — Sep 10, 2023</h4>
+              <p>We learned how much presence matters. Long-distance was hard — but we were stronger.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot">5</div>
+            <div class="time-content">
+              <h4>Celebrated Together — Feb 24, 2024</h4>
+              <p>Birthday, cake, and dancing in the living room.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="dot">6</div>
+            <div class="time-content">
+              <h4>Everyday — Today</h4>
+              <p>Small moments, big love. Thank you for being you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer card">
+        <p>Made with ❤️ by Prabesh — <small>October 24</small></p>
+        <div class="footer-actions">
+          <button id="download-btn" class="btn small">Download as PDF</button>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button id="lb-close" class="lb-close" aria-label="Close">✕</button>
+    <img id="lb-img" src="" alt="enlarged photo">
+    <p id="lb-caption" class="lb-caption"></p>
+  </div>
+
+  <!-- Optional audio (user needs to click play) -->
+  <audio id="bg-audio" loop preload="none">
+    <source src="https://cdn.pixabay.com/download/audio/2021/10/07/audio_bf1b6dbb95.mp3?filename=relaxing-acoustic-guitar-11157.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
