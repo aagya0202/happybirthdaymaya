@@ -4,9 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Happy Birthday Maya 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <meta name="description" content="A small surprise website for Maya — password protected." />
 <style>
-/* Mobile-first, responsive, accessible CSS (inline) */
+/* Mobile-first, responsive, accessible CSS (inline) - v5 with restored fonts */
 :root{
   --bg1: #fff1f4;
   --bg2: #fff8fb;
@@ -16,7 +17,7 @@
   --shadow: 0 12px 30px rgba(91,70,86,0.08);
   --radius:14px;
   --container:980px;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: light;
 }
 
@@ -67,7 +68,7 @@ body{
 
 /* header */
 .header{display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:8px 6px}
-.brand{font-family: "GreatVibes", cursive; font-size:26px;color:var(--accent);letter-spacing:0.4px}
+.brand{font-family: 'Great Vibes', cursive; font-size:28px;color:var(--accent);letter-spacing:0.4px}
 .small-note{font-size:13px;color:var(--muted)}
 
 /* lock screen styles */
@@ -78,8 +79,8 @@ body{
 .lock-card::before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 10% 20%, rgba(255,200,220,0.25), transparent 8%), radial-gradient(circle at 80% 80%, rgba(255,230,240,0.2), transparent 10%);pointer-events:none;opacity:0.9;transform:translateZ(0)}
 
 
-.greeting{font-family: 'Georgia', serif;font-size:32px;margin:6px 0;color:#3b1a2b;font-weight:600}
-.subtitle{margin:0;color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0.1px}
+.greeting{font-family: 'Great Vibes', cursive;font-size:36px;margin:6px 0;color:#3b1a2b;font-weight:600}
+.subtitle{margin:0;color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0.1px;font-size:16px;}
 
 /* spacing adjustments */
 .gap-small{height:8px}
@@ -115,8 +116,8 @@ body{
 
 /* small screens adjustments */
 @media (max-width:720px){
-  .greeting{font-size:26px}
-  .brand{font-size:20px}
+  .greeting{font-size:30px}
+  .brand{font-size:22px}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .gallery-grid img{height:120px}
   .input-row input[type="password"]{width:160px}
@@ -176,8 +177,8 @@ body{
   <!-- MAIN CONTENT (hidden until unlocked) -->
   <section id="mainContent" class="card main" aria-hidden="true">
     <div class="hero" aria-labelledby="heroTitle">
-      <h3 id="heroTitle" class="title">Happy Birthday, <span style="font-family:'Georgia',serif">Aabha Tiwari</span> 🎉</h3>
-      <p class="lead">A small website made with all my love — for your special day, October 24.</p>
+      <h3 id="heroTitle" class="title" style="font-family:'Great Vibes', cursive">Happy Birthday, <span style="font-family:'Great Vibes',cursive">Aabha Tiwari</span> 🎉</h3>
+      <p class="lead" style="color:var(--muted);margin:0">A small website made with all my love — for your special day, October 24.</p>
     </div>
 
     <section class="card" id="message" aria-labelledby="msgTitle">
@@ -293,8 +294,7 @@ body{
       pwMsg.textContent = '';
     } else {
       wrong();
-    }
-  });
+  } });
 
   // enter key submits
   pw.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') unlockBtn.click(); });
