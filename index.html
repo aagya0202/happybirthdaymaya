@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Happy Birthday, Aabha ❤️</title>
-<meta name="description" content="A small surprise website for Aabha — password protected." />
+<title>Happy Birthday Maya 💖</title>
+<meta name="description" content="A small surprise website for Maya — password protected." />
 <style>
 /* Mobile-first, responsive, accessible CSS (inline) */
 :root{
-  --bg:#fff8fb;
-  --card:#ffffff;
+  --bg1: #fff1f4;
+  --bg2: #fff8fb;
   --accent:#ff6b9a;
   --accent-2:#ff9ab8;
   --muted:#6b5560;
@@ -24,7 +24,7 @@
 html,body{height:100%}
 body{
   margin:0;
-  background:linear-gradient(180deg,#fff8fb 0%, #fffaf6 50%);
+  background:linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 50%);
   display:flex;
   align-items:flex-start;
   justify-content:center;
@@ -32,14 +32,33 @@ body{
   font-size:16px;
   color:#3a2430;
   min-height:100vh;
+  overflow-y:auto;
+}
+
+/* subtle animated gradient background layer */
+.bg-anim{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background: linear-gradient(120deg, rgba(255,240,245,0.9), rgba(255,250,250,0.9) 40%, rgba(255,245,247,0.95));
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease infinite;
+  pointer-events:none;
+  filter:blur(30px) saturate(1.05);
+  opacity:0.95;
+}
+@keyframes gradientShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 /* container */
-.container{width:100%;max-width:var(--container);}
+.container{position:relative;z-index:2;width:100%;max-width:var(--container);}
 
 /* card */
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,251,0.95));
+  background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,250,251,0.98));
   border-radius:18px;
   box-shadow:var(--shadow);
   padding:18px;
@@ -47,33 +66,37 @@ body{
 }
 
 /* header */
-.header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 6px}
+.header{display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:8px 6px}
 .brand{font-family: "GreatVibes", cursive; font-size:26px;color:var(--accent);letter-spacing:0.4px}
 .small-note{font-size:13px;color:var(--muted)}
 
 /* lock screen styles */
-.lock-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 14px;min-height:320px;text-align:center;gap:12px}
-.lock-card{width:100%;max-width:740px;border-radius:14px;padding:16px;background:rgba(255,255,255,0.96);box-shadow:0 10px 30px rgba(90,70,86,0.06)}
+.lock-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 14px;min-height:320px;text-align:center;gap:16px}
+.lock-card{width:100%;max-width:740px;border-radius:16px;padding:22px;background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,249,250,0.92));box-shadow:0 10px 30px rgba(90,70,86,0.06);position:relative;overflow:hidden}
 
-.greeting{font-family: 'Georgia', serif;font-size:34px;margin:6px 0;color:#3b1a2b}
-.subtitle{margin:0;color:var(--muted);font-weight:500}
+/* faint particle dots for elegance */
+.lock-card::before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 10% 20%, rgba(255,200,220,0.25), transparent 8%), radial-gradient(circle at 80% 80%, rgba(255,230,240,0.2), transparent 10%);pointer-events:none;opacity:0.9;transform:translateZ(0)}
 
+
+.greeting{font-family: 'Georgia', serif;font-size:32px;margin:6px 0;color:#3b1a2b;font-weight:600}
+.subtitle{margin:0;color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0.1px}
+
+/* spacing adjustments */
+.gap-small{height:8px}
+.gap-medium{height:14px}
+
+/* input and hint layout */
 .input-row{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:6px}
-.input-row input[type="password"]{padding:12px 14px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);width:220px;font-size:16px;outline:none}
+.input-row input[type="password"]{padding:12px 14px;border-radius:12px;border:1px solid rgba(0,0,0,0.07);width:220px;font-size:16px;outline:none}
 .input-row button{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
 
-.hint{color:var(--muted);font-size:14px;margin-top:6px}
+.hint{color:var(--muted);font-size:14px;margin-top:6px;white-space:pre-wrap;}
 
 /* play prompt */
 .play-prompt{display:none;margin-top:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:700}
 
 /* main content (hidden initially) */
 .main{display:none;opacity:0;transition:opacity .5s ease;}
-
-/* hero */
-.hero{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:12px}
-.hero .title{font-family:'Georgia',serif;font-size:28px;margin:0;color:#3b1a2b}
-.hero .lead{color:var(--muted);margin:0}
 
 /* gallery */
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
@@ -85,9 +108,6 @@ body{
 .timeline-item{display:flex;gap:10px;align-items:flex-start}
 .dot{min-width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;flex-shrink:0}
 
-/* footer */
-.footer{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:8px}
-
 /* lightbox */
 .lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(18,12,16,0.66);visibility:hidden;opacity:0;transition:opacity .18s ease,visibility .18s;z-index:9998}
 .lightbox img{max-width:92%;max-height:78%;border-radius:12px;box-shadow:0 18px 60px rgba(9,9,9,0.6)}
@@ -95,8 +115,8 @@ body{
 
 /* small screens adjustments */
 @media (max-width:720px){
-  .greeting{font-size:28px}
-  .brand{font-size:22px}
+  .greeting{font-size:26px}
+  .brand{font-size:20px}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .gallery-grid img{height:120px}
   .input-row input[type="password"]{width:160px}
@@ -113,28 +133,40 @@ body{
 </style>
 </head>
 <body>
+<div class="bg-anim" aria-hidden="true"></div>
+
 <noscript>
   <div style="max-width:980px;margin:20px auto;padding:16px;background:#fff5f8;border-radius:12px;color:#7b4458;font-family:Inter,system-ui;">
-    💖 Please enable JavaScript to view Aabha's surprise. If you can't enable JS right now, message Prabesh privately to see it. 💌
+    💖 Please enable JavaScript to view Maya's surprise. If you can't enable JS right now, message Prabesh privately to see it. 💌
   </div>
 </noscript>
 
 <div class="container" id="pageContainer">
   <header class="card header" role="banner" aria-label="Aabha and Prabesh header">
     <div class="brand" aria-hidden="false">Aabha &nbsp;❤&nbsp; Prabesh</div>
-    <div class="small-note" aria-hidden="true">October 24 · A small surprise</div>
   </header>
 
   <!-- LOCK SCREEN -->
   <main id="lockSection" class="card lock-wrap" role="main" aria-labelledby="greet" aria-live="polite">
     <div class="lock-card" role="region" aria-labelledby="greet" aria-describedby="pwHint">
-      <h2 id="greet" class="greeting">Hey Aabha 💖</h2>
-      <p class="subtitle">Enter the secret password to open your surprise</p>
+      <h2 id="greet" class="greeting">Happy Birthday Maya 💖</h2>
+
+      <div class="gap-small" aria-hidden="true"></div>
+
+      <p class="subtitle" id="instruction">Enter the Secret Code To Open Your Surprise!</p>
+
+      <div class="gap-medium" aria-hidden="true"></div>
+
       <div class="input-row" role="group" aria-label="Password input">
-        <input id="pw" type="password" placeholder="Type the secret password" autocomplete="off" aria-label="Password" aria-required="true" />
+        <input id="pw" type="password" placeholder="Type the secret code" autocomplete="off" aria-label="Secret code" aria-required="true" />
         <button id="unlockBtn" type="button" aria-label="Unlock">Unlock ✨</button>
       </div>
-      <p id="pwHint" class="hint"><strong>Hint:</strong> When Did I Officially Proposed you ? 🤭 Month and date only</p>
+
+      <div class="gap-medium" aria-hidden="true"></div>
+
+      <p id="pwHint" class="hint"><strong>Hint: When Did I Officially Proposed You ? 🤭
+(Month & Date Only)</strong></p>
+
       <p id="pwMsg" class="hint" style="color:#b24d6a;margin-top:6px" aria-live="assertive"></p>
 
       <div id="playPrompt" class="play-prompt" role="button" tabindex="0" aria-hidden="true">🎶 Tap to start our song</div>
@@ -197,14 +229,13 @@ body{
 <!-- Hidden audio (will attempt to play only after unlock or when user taps play prompt) -->
 <audio id="bgAudio" preload="none" loop>
   <source src="https://cdn.pixabay.com/download/audio/2021/10/07/audio_bf1b6dbb95.mp3?filename=relaxing-acoustic-guitar-11157.mp3" type="audio/mpeg">
-  <!-- fallback text -->
   Your browser does not support HTML5 audio.
 </audio>
 
 <script>
 (function(){
   'use strict';
-  const CORRECT = 'february2'; // updated correct password (case-insensitive)
+  const CORRECT = 'february2'; // correct password (case-insensitive)
   const hintWrong = '😔 Bad Guess Gareu Nani, Use this format :- Month(no space)Day';
 
   // elements
@@ -303,8 +334,8 @@ body{
     lightbox.style.opacity = '0';
     lightImg.src = '';
     lightbox.setAttribute('aria-hidden','true');
-    // restore focus to last focused element inside main content
-    if(lastFocused && mainContent.contains(lastFocused)) lastFocused.focus();
+    // restore focus to main area
+    if(lastFocused && document.body.contains(lastFocused)) lastFocused.focus();
   }
 
   // esc key closes lightbox and also returns focus appropriately
@@ -356,8 +387,10 @@ body{
   }
 
   // attach confetti handlers (only if buttons exist)
-  if(confettiBtn) confettiBtn.addEventListener('click', ()=>{ fireConfetti(); });
-  if(surpriseBtn) surpriseBtn.addEventListener('click', ()=>{ fireConfetti(); alert('Surprise sent! 💌 (Demo)'); });
+  const confBtn = document.getElementById('confettiBtn');
+  const surBtn = document.getElementById('surpriseBtn');
+  if(confBtn) confBtn.addEventListener('click', ()=>{ fireConfetti(); });
+  if(surBtn) surBtn.addEventListener('click', ()=>{ fireConfetti(); alert('Surprise sent! 💌 (Demo)'); });
 
   // floating hearts (lightweight)
   function createHearts(count){
