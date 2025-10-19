@@ -195,7 +195,26 @@ body{
      <h3 id="heroTitle" class="title" style="font-family:'Great Vibes', cursive; font-size: 2.8rem; font-weight: 500;">
   Happy Birthday, <span style="font-family:'Great Vibes',cursive"> Baby </span> 🎉
 </h3>
-      <p class="lead" style="color:var(--muted);margin:0">A small website made with all my love — for your special day, October 24.</p>
+<p class="lead" style="color:var(--muted);margin:0">
+  A small website made with all my love — for your special day, October 24.
+</p>
+
+<!-- Small spacing -->
+<div style="height: 20px;"></div>
+
+<!-- Love message section -->
+<div class="love-message" style="text-align:center; max-width:600px; margin:0 auto;">
+  <h4 style="font-family:'Great Vibes', cursive; font-size:28px; color:var(--accent); margin-bottom:10px;">
+    Love Message
+  </h4>
+  <p style="font-family:'Inter', sans-serif; font-size:16px; color:var(--text); line-height:1.6;">
+    My dearest Aabha, every day with you is my favorite day. Your smile turns ordinary moments into magic.
+    On this birthday, I wish you all the joy you bring me tenfold.  
+    I love you — always and forever.  
+    <br><span style="color:var(--accent); font-weight:600;">— Prabesh ❤</span>
+  </p>
+</div>
+
     </div>
 
     <section class="card" id="message" aria-labelledby="msgTitle">
@@ -454,6 +473,14 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "power2.out" // smooth easing motion
     });
   }, 800); // delay in milliseconds
+});
+  // Fade in love message after title
+gsap.from(".love-message", {
+  duration: 1.2,
+  opacity: 0,
+  y: 30,
+  ease: "power2.out",
+  delay: 1.5
 });
 </script>
 
