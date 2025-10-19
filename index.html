@@ -142,6 +142,10 @@ body{
 
 /* decorative hearts */
 .heart{position:absolute;pointer-events:none;transform:translate(-50%,-50%);opacity:0.85;font-size:18px;will-change:transform,opacity}
+.hero .title {
+  font-size: 52px; /* makes your title bigger */
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.8); /* soft pink glow */
+}
 </style>
 </head>
 <body>
@@ -435,5 +439,23 @@ body{
 
 })(); // end IIFE
 </script>
+  <!-- GSAP animation library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Fade-in + zoom animation for title -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Run animation shortly after page unlock
+  setTimeout(() => {
+    gsap.from("#heroTitle", {
+      duration: 1.8,     // how long animation lasts
+      opacity: 0,        // start fully invisible
+      scale: 0.8,        // start slightly smaller
+      ease: "power2.out" // smooth easing motion
+    });
+  }, 800); // delay in milliseconds
+});
+</script>
+
 </body>
 </html>
